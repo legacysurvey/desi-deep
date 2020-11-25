@@ -5,11 +5,6 @@ import os
 import healpy
 from astropy.table import Table
 
-#home = os.environ['HOME']
-#sys.path.insert(0, home + '/astrometry')
-#sys.path.insert(0, home + '/desicode')
-#from astrometry.util.fits import *
-
 from desisim.io import read_basis_templates
 from desisim.scripts.quickspectra import sim_spectra
 from desisim.templates import BGS
@@ -64,7 +59,7 @@ def main():
     # Read one healpix of the Buzzard mocks for redshift distribution.
     mock = Table(os.path.join(os.environ['BUZZARD_DIR'],
                                    '8', '0', '0', 'Buzzard_v1.6_lensed-8-0.fits'),
-                        columns='lmag z'.split())
+                        names='lmag z'.split())
     # LMAG: observed mag, DECam grizY
     mock_mag_r = mock['LMAG'][:,1]
     dm = 0.01
