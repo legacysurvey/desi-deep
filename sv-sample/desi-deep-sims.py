@@ -57,9 +57,10 @@ def main():
                          'MOONALT': -60, 'MOONFRAC': 0.0, 'MOONSEP': 180}
 
     # Read one healpix of the Buzzard mocks for redshift distribution.
-    mock = Table(os.path.join(os.environ['BUZZARD_DIR'],
+    mock = Table.read(os.path.join(os.environ['BUZZARD_DIR'],
                                    '8', '0', '0', 'Buzzard_v1.6_lensed-8-0.fits'),
-                        names='lmag z'.split())
+                      #columns='lmag z'.split()
+                      )
     # LMAG: observed mag, DECam grizY
     mock_mag_r = mock['LMAG'][:,1]
     dm = 0.01
